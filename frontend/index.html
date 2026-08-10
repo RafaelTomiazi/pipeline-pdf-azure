@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pipeline PDF · Painel de Processamento</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="scanline" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">◈</span>
+      <div class="brand-text">
+        <h1>Pipeline PDF</h1>
+        <p>Extração · Tradução · Telemetria</p>
+      </div>
+    </div>
+    <div class="pipeline-flow" aria-label="Etapas do pipeline">
+      <span class="flow-node">PDF</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node">Function</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node">Doc Intelligence</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node">OpenAI</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node flow-node--out">Saídas</span>
+    </div>
+    <button id="refresh" class="refresh-btn" title="Atualizar agora">
+      <span class="refresh-icon">↻</span>
+      <span class="refresh-label">Atualizar</span>
+    </button>
+  </header>
+
+  <main class="stage">
+    <section class="uploader" id="uploader" aria-label="Enviar PDF">
+      <input type="file" id="file-input" accept="application/pdf,.pdf" hidden>
+      <div class="drop" id="drop-zone" tabindex="0" role="button" aria-label="Arraste um PDF ou clique para selecionar">
+        <div class="drop-glyph">⬆</div>
+        <div class="drop-text">
+          <strong>Arraste um PDF aqui</strong>
+          <span>ou clique para selecionar · o pipeline processa automaticamente</span>
+        </div>
+      </div>
+      <div class="upload-state" id="upload-state" hidden>
+        <div class="upload-bar"><div class="upload-bar-fill" id="upload-fill"></div></div>
+        <span id="upload-msg" class="upload-msg">Enviando…</span>
+      </div>
+    </section>
+
+    <section class="summary" id="summary" hidden>
+      <div class="stat">
+        <span class="stat-label">Documentos</span>
+        <span class="stat-value" id="stat-docs">—</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Páginas totais</span>
+        <span class="stat-value" id="stat-pages">—</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Tokens totais</span>
+        <span class="stat-value" id="stat-tokens">—</span>
+      </div>
+      <div class="stat stat--cost">
+        <span class="stat-label">Custo acumulado</span>
+        <span class="stat-value" id="stat-cost">—</span>
+      </div>
+    </section>
+
+    <div class="status-line" id="status-line">
+      <span class="dot"></span>
+      <span id="status-text">Conectando ao pipeline…</span>
+    </div>
+
+    <section id="docs" class="docs" aria-live="polite"></section>
+
+    <div id="empty" class="empty" hidden>
+      <div class="empty-glyph">⌁</div>
+      <h2>Nenhum documento processado ainda</h2>
+      <p>Envie um PDF para o container <code>entrada</code> e ele aparecerá aqui assim que o pipeline concluir.</p>
+    </div>
+
+    <div id="error" class="error-box" hidden>
+      <div class="error-glyph">⚠</div>
+      <h2>Não foi possível alcançar o pipeline</h2>
+      <p id="error-detail">Verifique se a Function está no ar e tente novamente.</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <span>rg-rafael-pipeline</span>
+    <span class="footer-sep">·</span>
+    <span>Azure Functions + Document Intelligence + OpenAI</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

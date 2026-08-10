@@ -1,0 +1,50 @@
+# ==========================================================
+# Segredos — NUNCA versionar (contem endpoints e chaves)
+# ==========================================================
+local.settings.json
+*.publishsettings
+.env
+.env.*
+
+# ==========================================================
+# Python / Azure Functions
+# ==========================================================
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.python_packages/
+bin/
+obj/
+
+# Azure Functions Core Tools
+.func/
+azure-functions-core-tools/
+
+# ==========================================================
+# Arquivos de teste gerados localmente
+# ==========================================================
+*.pdf
+*.docx
+*.md.bak
+extracao_*.md
+fiel_*.docx
+traduzido_*.docx
+metadata_*.json
+teste*.pdf
+
+# ==========================================================
+# Node (caso o SWA gere algo)
+# ==========================================================
+node_modules/
+
+# ==========================================================
+# Editor / SO
+# ==========================================================
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
