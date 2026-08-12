@@ -4,7 +4,7 @@
 // ============================================================
 
 // Base da API. Em desenvolvimento local, aponta pro func start.
-// No deploy, troque pela URL da Function na nuvem (veja README).
+// Function na nuvem .
 const API_BASE = "https://func-rafael-pipeline.azurewebsites.net/api";
 const API_URL = `${API_BASE}/status`;
 
