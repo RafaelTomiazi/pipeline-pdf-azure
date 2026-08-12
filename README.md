@@ -1,9 +1,11 @@
 # Pipeline PDF — Extração, Tradução e Telemetria na Azure
 
+
 Pipeline serverless *event-driven* que recebe um PDF, extrai seu conteúdo com fidelidade estrutural, traduz para inglês e gera um relatório de telemetria — tudo disparado automaticamente no momento em que o arquivo chega, sem intervenção manual.
 
 O projeto integra quatro serviços da Azure (Functions, Storage, Document Intelligence e OpenAI) e entrega uma interface web para enviar PDFs e acompanhar os resultados.
 
+**🔗 [Acessar a aplicação](https://witty-bush-0d8824c0f.7.azurestaticapps.net/)**
 ---
 
 ## O que a aplicação faz
